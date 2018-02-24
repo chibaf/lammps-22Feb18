@@ -13,7 +13,7 @@ DEPFLAGS =	-M
 
 LINK =		mpicxx
 LINKFLAGS =	-g -O
-LIB = 		-L/usr/local/opt/llvm/lib -L/usr/local/Cellar/openblas/0.2.20_1/lib -L/usr/local/Cellar/gcc/7.3.0/lib/gcc/7 -lgfortran -lopenblas -lgomp
+LIB =		-L/usr/local/opt/llvm/lib -L/usr/local/Cellar/openblas/0.2.20_1/lib -L/usr/local/Cellar/gcc/7.3.0/lib/gcc/7 -lgfortran -lopenblas -lgomp
 SIZE =		size
 
 ARCHIVE =	ar
