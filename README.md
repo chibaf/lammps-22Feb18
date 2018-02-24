@@ -5,4 +5,4 @@ After some transactions,
 "$ make mpi (at src/)" 
 generates lammps binary lmp_mpi for macOS.
 
-Detail of installation is described on "lammps-22Feb18-installation.html"
+Detail of installation is described on "lammps-22Feb18-installation.html" (this file was edited with Seamonkey.)
