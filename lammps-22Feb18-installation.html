@@ -15,7 +15,7 @@
             <div align="center"><font size="+3"><b><span
                     style="font-size: 16pt; font-family:
                     &quot;Courier&quot;;"><font face="Courier">Installation
-                      of lammps-22Feb18 on macOS High Sierra 26 February
+                      of lammps-22Feb18 on macOS High Sierra 25 February
                       2018: <a
                         href="https://twitter.com/chibaf?lang=en">Twitter@chibaf</a></font></span></b><span
                   style="font-size: 14.000000pt; font-family: 'Courier'"></span><br>
@@ -27,17 +27,53 @@
                   rgb(100.000000%, 100.000000%, 100.000000%)">
                   <div class="layoutArea">
                     <div class="column">
-                      <pre><span style="font-size: 14.000000pt; font-family: 'Courier'">In this document, lammps standard packages are emplyoed.
+                      <pre><span style="font-size: 14.000000pt; font-family: 'Courier'">In this document, lammps standard packages are <font face="Courier">employed</font>.
 </span></pre>
                       <pre><span style="font-size: 14.000000pt; font-family: 'Courier'">(0) We employ Macbook Pro <font face="Courier">15</font> inch <font face="Courier">late</font> 201<font face="Courier">6</font>.
-(1) <font face="Courier">macOS High Sierra</font> is employed.
-(2) You need knowledge of UNIX commands. <br><br><font face="Courier">If you have never installed Xcode tools:</font><br>(3) Xcode.app is needed. It can be obtained from<font face="Courier"> </font></span><span style="font-size: 14.000000pt; font-family: 'Courier'; color: rgb(0.000000%, 0.000000%, 50.196000%)"><a href="https://developer.apple.com"><font face="Courier">https://developer.apple.com</font></a><br><font face="Courier">　　<font color="#000000">You are required an account of this site.</font></font></span><span style="font-size: 14pt; font-family: &quot;Courier&quot;;"><br>(4) After installation of Xcode.app, tat Termila.app:<br>$ xcode-select -instasll
+(1) <font face="Courier">macOS High Sierra</font> 10.13.3 is employed.
+(2) You need knowledge of UNIX commands. <br><br><font face="Courier">If you have never installed Xcode tools:</font><br>(3) Xcode.app is needed. It can be obtained from<font face="Courier"> </font></span><span style="font-size: 14.000000pt; font-family: 'Courier'; color: rgb(0.000000%, 0.000000%, 50.196000%)"><a href="https://developer.apple.com"><font face="Courier">https://developer.apple.com</font></a><br><font face="Courier">　　<font color="#000000">You are required an account of this site.</font></font></span><span style="font-size: 14pt; font-family: &quot;Courier&quot;;"><br>(4) After installation of Xcode.app, tat <font face="Courier">Terminal</font>.app:<br>$ xcode-select -install
 $ sudo xcodebuild -license
-Then gnu tools are enable.<br><br><font face="Courier">(5a) If you have never used <a href="https://brew.sh">homebrew</a>: <br><code><font face="Courier">$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</font></code></font></span><span style="font-size: 14.000000pt; font-family: 'Courier'"><br>(5) On <font face="Courier">llvm</font> of Apple, OpenMP (is needed for parallel computing) is not available. Then <font face="Courier">install llvm with openmp by homebrew:<br>$ brew install llvm<br>(6) Installation of gfortran (gfortran is included in GNU Compiler Collectio=gcc.):<br>$ brew install gcc<br></font>(<font face="Courier">7</font>) Installation of OpenMPI (is needed for parallel computing):</span><span style="font-size: 14.000000pt; font-family: 'Courier'">
-$ <font face="Courier">brew install openmpi</font>
-(<font face="Courier">8</font>) Installation of FFTW (is need<font face="Courier">ed for Fast Fourier </font>Transform):
-Obtain source codes of FFTW from http://www.fftw.org, and
-$ <font face="Courier">brew install fftw</font></span></pre>
+Then gnu tools are enable.<br><br></span></pre>
+                      <p><span style="font-size: 14pt; font-family:
+                          &quot;Courier&quot;;"><font face="Courier">(5a)
+                            If you have never used <a
+                              href="https://brew.sh">homebrew</a>: </font></span></p>
+                      <p><span style="font-size: 14pt; font-family:
+                          &quot;Courier&quot;;"><font face="Courier"><code><font
+                                face="Courier">$ /usr/bin/ruby -e
+                                "$(curl -fsSL
+                                https://raw.githubusercontent.com/Homebrew/install/master/install)"</font></code></font></span><span
+                          style="font-size: 14.000000pt; font-family:
+                          'Courier'"></span></p>
+                      <p><span style="font-size: 14.000000pt;
+                          font-family: 'Courier'">(5) On <font
+                            face="Courier">llvm</font> of Apple, OpenMP
+                          (is needed for parallel computing) is not
+                          available. Then <font face="Courier">install
+                            llvm with openmp by homebrew:</font></span></p>
+                      <p><span style="font-size: 14.000000pt;
+                          font-family: 'Courier'"><font face="Courier">$
+                            brew install llvm</font></span></p>
+                      <p><span style="font-size: 14.000000pt;
+                          font-family: 'Courier'"><font face="Courier">(6)
+                            Installation of gfortran (gfortran is
+                            included in GNU Compiler Collection=gcc.):</font></span></p>
+                      <p><span style="font-size: 14.000000pt;
+                          font-family: 'Courier'"><font face="Courier">$
+                            brew install gcc</font></span></p>
+                      <p><span style="font-size: 14.000000pt;
+                          font-family: 'Courier'">(<font face="Courier">7</font>)
+                          Installation of OpenMPI (is needed for
+                          parallel computing):</span><span
+                          style="font-size: 14.000000pt; font-family:
+                          'Courier'">
+                          <br>
+                          $ <font face="Courier">brew install openmpi</font>
+                          <br>
+                          (<font face="Courier">8</font>) Installation
+                          of FFTW (is need<font face="Courier">ed for
+                            Fast Fourier </font>Transform):<br>
+                          $ <font face="Courier">brew install fftw</font></span></p>
                       <pre><span style="font-size: 14.000000pt; font-family: 'Courier'; color: rgb(0.000000%, 0.000000%, 100.000000%)">If you employ Apple BLAS library, skip this step. <font color="#000000">/ <font face="Courier">BLAS</font> is <font face="Courier">a library for Matrix calculation.</font> </font><br></span></pre>
                       <pre><span style="font-size: 14.000000pt; font-family: 'Courier'">(<font face="Courier">9</font>) Installation of OpenBLAS:
 $ <font face="Courier">brew install openblas</font></span><span style="font-size: 14.000000pt; font-family: 'Courier'">
