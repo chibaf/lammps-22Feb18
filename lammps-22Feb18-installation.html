@@ -1,0 +1,1096 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>lammps-22Feb18-installation</title>
+  </head>
+  <body>
+    <p><br>
+      <font face="Courier"> </font></p>
+    <div class="page" title="Page 1"><font face="Courier">
+        <div class="section" style="background-color: rgb(100.000000%,
+          100.000000%, 100.000000%)">
+          <div class="layoutArea">
+            <div align="center"><font size="+3"><b><span
+                    style="font-size: 16pt; font-family:
+                    &quot;Courier&quot;;"><font face="Courier">Installation
+                      of lammps-22Feb18 on macOS High Sierra 26 February
+                      2018: <a
+                        href="https://twitter.com/chibaf?lang=en">Twitter@chibaf</a></font></span></b><span
+                  style="font-size: 14.000000pt; font-family: 'Courier'"></span><br>
+              </font> <font size="+3"><span style="font-size:
+                  14.000000pt; font-family: 'Courier'"></span></font></div>
+            <span style="font-size: 14.000000pt; font-family: 'Courier'">
+              <div class="page" title="Page 1">
+                <div class="section" style="background-color:
+                  rgb(100.000000%, 100.000000%, 100.000000%)">
+                  <div class="layoutArea">
+                    <div class="column">
+                      <pre><span style="font-size: 14.000000pt; font-family: 'Courier'">In this document, lammps standard packages are emplyoed.
+</span></pre>
+                      <pre><span style="font-size: 14.000000pt; font-family: 'Courier'">(0) We employ Macbook Pro <font face="Courier">15</font> inch <font face="Courier">late</font> 201<font face="Courier">6</font>.
+(1) <font face="Courier">macOS High Sierra</font> is employed.
+(2) You need knowledge of UNIX commands. <br><br><font face="Courier">If you have never installed Xcode tools:</font><br>(3) Xcode.app is needed. It can be obtained from<font face="Courier"> </font></span><span style="font-size: 14.000000pt; font-family: 'Courier'; color: rgb(0.000000%, 0.000000%, 50.196000%)"><a href="https://developer.apple.com"><font face="Courier">https://developer.apple.com</font></a><br><font face="Courier">　　<font color="#000000">You are required an account of this site.</font></font></span><span style="font-size: 14pt; font-family: &quot;Courier&quot;;"><br>(4) After installation of Xcode.app, tat Termila.app:<br>$ xcode-select -instasll
+$ sudo xcodebuild -license
+Then gnu tools are enable.<br><br><font face="Courier">(5a) If you have never used <a href="https://brew.sh">homebrew</a>: <br><code><font face="Courier">$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</font></code></font></span><span style="font-size: 14.000000pt; font-family: 'Courier'"><br>(5) On <font face="Courier">llvm</font> of Apple, OpenMP (is needed for parallel computing) is not available. Then <font face="Courier">install llvm with openmp by homebrew:<br>$ brew install llvm<br>(6) Installation of gfortran (gfortran is included in GNU Compiler Collectio=gcc.):<br>$ brew install gcc<br></font>(<font face="Courier">7</font>) Installation of OpenMPI (is needed for parallel computing):</span><span style="font-size: 14.000000pt; font-family: 'Courier'">
+$ <font face="Courier">brew install openmpi</font>
+(<font face="Courier">8</font>) Installation of FFTW (is need<font face="Courier">ed for Fast Fourier </font>Transform):
+Obtain source codes of FFTW from http://www.fftw.org, and
+$ <font face="Courier">brew install fftw</font></span></pre>
+                      <pre><span style="font-size: 14.000000pt; font-family: 'Courier'; color: rgb(0.000000%, 0.000000%, 100.000000%)">If you employ Apple BLAS library, skip this step. <font color="#000000">/ <font face="Courier">BLAS</font> is <font face="Courier">a library for Matrix calculation.</font> </font><br></span></pre>
+                      <pre><span style="font-size: 14.000000pt; font-family: 'Courier'">(<font face="Courier">9</font>) Installation of OpenBLAS:
+$ <font face="Courier">brew install openblas</font></span><span style="font-size: 14.000000pt; font-family: 'Courier'">
+</span></pre>
+                      <pre><span style="font-size: 14.000000pt; font-family: 'Courier'">Then necessary tools and libraries were installed.
+</span></pre>
+                      <pre><span style="font-size: 14.000000pt; font-family: 'Courier'">(<font face="Courier">10</font>) building of lammps-5Nov14
+Obtain lammps-<font face="Courier">22Feb18.tar.gz</font> from </span><a href="http://lammps.sandia.gov/tars/?C=M;O=D"><span style="font-size: 14.000000pt; font-family: 'Courier'; color: rgb(0.000000%, 0.000000%, 50.196000%)">http://lammps.sandia.gov/tars/?C=M;O=D
+</span></a></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </span> <font size="+1">(10.1) extract the tar.gz file and
+              open Terminal.app and change the directory to
+              "lammps-22Feb18/src"<br>
+              <br>
+              (10.2) build makefiles and source code files as follows </font><font
+              size="+1"><font face="Courier" size="+1"> (about packages
+                below, see <a
+                  href="http://lammps.sandia.gov/doc/Section_packages.html">4.
+                  Packages — LAMMPS documentation</a>)</font>:<br>
+            </font>
+            <div class="column">
+              <p> </p>
+            </div>
+            <font size="+1"> </font>
+            <p><font size="+1">$ <u>make yes-all</u></font>
+            </p>
+          </div>
+        </div>
+      </font></div>
+    <p><font face="Courier" size="+1">Installing package asphere</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package GPU</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-CGDNA</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-INTEL</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package body</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package class2</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package GPU</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package KOKKOS</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package colloid</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package GPU</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package compress</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package coreshell</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package dipole</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-MISC</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package gpu</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package granular</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package kim</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package kokkos</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package kspace</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package CORESHELL</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package GPU</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package KOKKOS</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package OPT</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-INTEL</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package
+        USER-PHONON</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-FEP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package latte</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package manybody</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package GPU</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package KOKKOS</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package OPT</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-MISC</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package mc</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package meam</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package misc</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package molecule</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package GPU</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package KOKKOS</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-MISC</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-FEP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-CGDNA</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-INTEL</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package mpiio</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package mscg</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package opt</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package peri</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package poems</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package python</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package qeq</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package reax</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package replica</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package rigid</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package shock</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package snap</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package KOKKOS</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package srd</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package voronoi</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-atc</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-awpmd</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-cgdna</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-cgsdk</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package GPU</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package KOKKOS</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-colvars</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package
+        user-diffraction</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-dpd</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package KOKKOS</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-drude</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-eff</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-fep</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-h5md</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-intel</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-lb</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-manifold</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-meamc</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-meso</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-mgpt</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-misc</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package GPU</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-molfile</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-netcdf</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-omp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-phonon</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-qmmm</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-qtb</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-quip</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-reaxc</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package KOKKOS</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating package USER-OMP</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.cpp</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/fix_qeq_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">&nbsp; updating
+        src/pair_comb_omp.h</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-smd</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-smtbq</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-sph</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-tally</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-uef</font></p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">Installing package user-vtk<br>
+      </font></p>
+    <p><font face="Courier" size="+1">(10.3) Uninstalling several
+        packages.<br>
+      </font> </p>
+    <font face="Courier" size="+1">
+    </font>
+    <p><font face="Courier" size="+1">MacBookPro15Late2016:src chibaf$ <u>make
+          no-gpu</u><br>
+        Uninstalling package gpu<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-kim</u><br>
+        Uninstalling package kim<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-poems</u><br>
+        Uninstalling package poems<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-reax</u><br>
+        Uninstalling package reax<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-voronoi</u><br>
+        Uninstalling package voronoi<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-meam</u><br>
+        Uninstalling package meam<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-user-awpmd</u><br>
+        Uninstalling package user-awpmd<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-user-cuda</u><br>
+        Package user-cuda does not exist<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-kokkos</u><br>
+        Uninstalling package kokkos<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-user-qmmm</u><br>
+        Uninstalling package user-qmmm<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-user-colvars</u><br>
+        Uninstalling package user-colvars<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-user-atc</u><br>
+        Uninstalling package user-atc<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-user-quip</u><br>
+        Uninstalling package user-quip<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-user-h5md</u><u><br>
+        </u><u>
+        </u>Uninstalling package user-h5md<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-mscg</u><br>
+        Uninstalling package mscg<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-latte</u><br>
+        Uninstalling package latte<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-user-h5md</u><br>
+        Uninstalling package user-h5md<br>
+      </font> <font face="Courier" size="+1">MacBookPro15Late2016:src
+        chibaf$ <u>make no-user-h5md</u><br>
+        Uninstalling package user-h5md<br>
+        MacBookPro15Late2016:src chibaf$ <u>make no-user-vtk</u><br>
+      </font> <font face="Courier" size="+1">Uninstalling package
+        user-vtk<br>
+      </font> <font face="Courier" size="+1"><br>
+        Above uninstalling packages are ones with which we couldn't
+        build lammps.<br>
+      </font></p>
+    <p><font face="Courier" size="+1">(10.4) Before building lammps, you
+        need to modify </font><font face="Courier" size="+1"><font
+          face="Courier"><font size="+1">"lammps-22Feb18</font></font>src/MAKE/Makefile.mpi"<br>
+      </font></p>
+    <p><br>
+      <font face="Courier" size="+1">
+        <meta http-equiv="Content-Type" content="text/html;
+          charset=UTF-8">
+        <title></title>
+        <div class="page" title="Page 3"><span style="font-size:
+            14.000000pt; font-family: 'Courier'">We show only modified
+            lines:</span><br>
+          <div class="section" style="background-color: rgb(100.000000%,
+            100.000000%, 100.000000%)">
+            <div class="layoutArea">
+              <div class="column"><span style="font-size: 14.000000pt;
+                  font-family: 'Courier'"></span>
+                <p><span style="font-size: 14.000000pt; font-family:
+                    'Courier'">
+                    CCFLAGS = -g -O3 -fopenmp
+                  </span></p>
+                <pre><span style="font-size: 14.000000pt; font-family: 'Courier'; color: rgb(0.000000%, 0.000000%, 100.000000%)"># if you employ OpenBLAS,
+</span></pre>
+                <p><span style="font-size: 14.000000pt; font-family:
+                    'Courier'">LIB = -lgfortran -lgomp -lopenblas
+                  </span></p>
+                <pre><span style="font-size: 14.000000pt; font-family: 'Courier'; color: rgb(0.000000%, 0.000000%, 100.000000%)"># openblas_xxxxx is a name of your
+/usr/local/lib/libopenblas_xxxxx. xxxx consists of cpu
+name and version number.
+# if you employ Apple BLAS,
+</span></pre>
+              </div>
+            </div>
+            <div class="layoutArea">LIB =&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp; -lgfortran -lgomp -framework Accelerate<br>
+              LMP_INC =&nbsp;&nbsp;&nbsp; -DLAMMPS_GZIP
+              -DLAMMPS_MEMALIGN=64<br>
+              FFT_INC =&nbsp;&nbsp;&nbsp; -DFFT_FFTW3<br>
+              FFT_LIB =&nbsp;&nbsp;&nbsp; -lfftw3<br>
+              <span style="font-size: 14.000000pt; font-family:
+                'Courier'"></span>
+              <div class="column">
+                <p><span style="font-size: 14.000000pt; font-family:
+                    'Courier'"><font face="Courier"><font
+                        color="#3333ff">If you couldn't link </font></font></span><span
+                    style="font-size: 14.000000pt; font-family:
+                    'Courier'"><font face="Courier"><font
+                        color="#3333ff"><font face="Courier" size="+1"><span
+                            style="font-size: 14.000000pt; font-family:
+                            'Courier'"><font face="Courier"><font
+                                color="#3333ff">stdc++ library,</font></font></span></font>
+                        openblas and gfortran, you might modify as
+                        follows. "/usr/local/Cellar/" is a directory for
+                        homebrew files. few lines below are examples:</font><br>
+                      LIB = -L/usr/local/opt/llvm/lib
+                      -L/usr/local/Cellar/openblas/0.2.20_1/lib
+                      -L/usr/local/Cellar/gcc/7.3.0/lib/gcc/7 -lgfortran
+                      -lopenblas -lgomp</font></span></p>
+                <p><span style="font-size: 14.000000pt; font-family:
+                    'Courier'"></span></p>
+                <pre><span style="font-size: 14.000000pt; font-family: 'Courier'"><font face="Courier">We placed this Makefile.mpi (OpenBLAS version) on <a href="https://github.com/chibaf/lammps-22Feb18">https://github.com/chibaf/lammps-22Feb18</a><br></font></span></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page" title="Page 4">
+          <div class="section" style="background-color: rgb(100.000000%,
+            100.000000%, 100.000000%)">
+            <div class="layoutArea">
+              <div class="column">
+                <pre><span style="font-size: 14.000000pt; font-family: 'Courier'">Then at src,
+$ make mpi
+If build becomes successful, lmp_mpi is generated at src/ as follows<font face="Courier">:</font>
+</span></pre>
+                <font face="Monaco"> </font></div>
+              <font face="Monaco"> </font></div>
+            <font face="Monaco"> </font></div>
+          <font face="Monaco"> </font></div>
+        <font face="Monaco"> </font></font><font face="Monaco">
+      </font></p>
+    <font face="Monaco" size="+1">
+    </font><font face="Monaco">...........<br>
+      mpicxx -g
+      -O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      angle.o angle_charmm.o angle_charmm_intel.o angle_charmm_omp.o
+      angle_class2.o angle_class2_omp.o angle_cosine.o
+      angle_cosine_delta.o angle_cosine_delta_omp.o angle_cosine_omp.o
+      angle_cosine_periodic.o angle_cosine_periodic_omp.o
+      angle_cosine_shift.o angle_cosine_shift_exp.o
+      angle_cosine_shift_exp_omp.o angle_cosine_shift_omp.o
+      angle_cosine_squared.o angle_cosine_squared_omp.o angle_dipole.o
+      angle_dipole_omp.o angle_fourier.o angle_fourier_omp.o
+      angle_fourier_simple.o angle_fourier_simple_omp.o angle_harmonic.o
+      angle_harmonic_intel.o angle_harmonic_omp.o angle_hybrid.o
+      angle_quartic.o angle_quartic_omp.o angle_sdk.o angle_sdk_omp.o
+      angle_table.o angle_table_omp.o angle_zero.o atom.o atom_map.o
+      atom_vec.o atom_vec_angle.o atom_vec_atomic.o atom_vec_body.o
+      atom_vec_bond.o atom_vec_charge.o atom_vec_dipole.o atom_vec_dpd.o
+      atom_vec_edpd.o atom_vec_electron.o atom_vec_ellipsoid.o
+      atom_vec_full.o atom_vec_hybrid.o atom_vec_line.o atom_vec_mdpd.o
+      atom_vec_meso.o atom_vec_molecular.o atom_vec_peri.o
+      atom_vec_smd.o atom_vec_sphere.o atom_vec_tdpd.o
+      atom_vec_template.o atom_vec_tri.o balance.o body.o
+      body_nparticle.o bond.o bond_class2.o bond_class2_omp.o
+      bond_fene.o bond_fene_expand.o bond_fene_expand_omp.o
+      bond_fene_intel.o bond_fene_omp.o bond_gromos.o bond_gromos_omp.o
+      bond_harmonic.o bond_harmonic_intel.o bond_harmonic_omp.o
+      bond_harmonic_shift.o bond_harmonic_shift_cut.o
+      bond_harmonic_shift_cut_omp.o bond_harmonic_shift_omp.o
+      bond_hybrid.o bond_morse.o bond_morse_omp.o bond_nonlinear.o
+      bond_nonlinear_omp.o bond_oxdna2_fene.o bond_oxdna_fene.o
+      bond_quartic.o bond_quartic_omp.o bond_table.o bond_table_omp.o
+      bond_zero.o change_box.o citeme.o comm.o comm_brick.o comm_tiled.o
+      compute.o compute_ackland_atom.o compute_aggregate_atom.o
+      compute_angle.o compute_angle_local.o compute_angmom_chunk.o
+      compute_basal_atom.o compute_body_local.o compute_bond.o
+      compute_bond_local.o compute_centro_atom.o compute_chunk_atom.o
+      compute_cluster_atom.o compute_cna_atom.o compute_cnp_atom.o
+      compute_com.o compute_com_chunk.o compute_contact_atom.o
+      compute_coord_atom.o compute_damage_atom.o compute_dihedral.o
+      compute_dihedral_local.o compute_dilatation_atom.o
+      compute_dipole_chunk.o compute_displace_atom.o compute_dpd.o
+      compute_dpd_atom.o compute_edpd_temp_atom.o
+      compute_erotate_asphere.o compute_erotate_rigid.o
+      compute_erotate_sphere.o compute_erotate_sphere_atom.o
+      compute_event_displace.o compute_fep.o compute_force_tally.o
+      compute_fragment_atom.o compute_global_atom.o
+      compute_group_group.o compute_gyration.o compute_gyration_chunk.o
+      compute_heat_flux.o compute_heat_flux_tally.o
+      compute_hexorder_atom.o compute_improper.o
+      compute_improper_local.o compute_inertia_chunk.o compute_ke.o
+      compute_ke_atom.o compute_ke_atom_eff.o compute_ke_eff.o
+      compute_ke_rigid.o compute_meso_e_atom.o compute_meso_rho_atom.o
+      compute_meso_t_atom.o compute_msd.o compute_msd_chunk.o
+      compute_msd_nongauss.o compute_omega_chunk.o
+      compute_orientorder_atom.o compute_pair.o compute_pair_local.o
+      compute_pe.o compute_pe_atom.o compute_pe_mol_tally.o
+      compute_pe_tally.o compute_plasticity_atom.o compute_pressure.o
+      compute_pressure_grem.o compute_pressure_uef.o
+      compute_property_atom.o compute_property_chunk.o
+      compute_property_local.o compute_rdf.o compute_reduce.o
+      compute_reduce_region.o compute_rigid_local.o compute_saed.o
+      compute_slice.o compute_smd_contact_radius.o compute_smd_damage.o
+      compute_smd_hourglass_error.o compute_smd_internal_energy.o
+      compute_smd_plastic_strain.o compute_smd_plastic_strain_rate.o
+      compute_smd_rho.o compute_smd_tlsph_defgrad.o
+      compute_smd_tlsph_dt.o compute_smd_tlsph_num_neighs.o
+      compute_smd_tlsph_shape.o compute_smd_tlsph_strain.o
+      compute_smd_tlsph_strain_rate.o compute_smd_tlsph_stress.o
+      compute_smd_triangle_mesh_vertices.o compute_smd_ulsph_effm.o
+      compute_smd_ulsph_num_neighs.o compute_smd_ulsph_strain.o
+      compute_smd_ulsph_strain_rate.o compute_smd_ulsph_stress.o
+      compute_smd_vol.o compute_sna_atom.o compute_snad_atom.o
+      compute_snav_atom.o compute_spec_atom.o compute_stress_atom.o
+      compute_stress_tally.o compute_tdpd_cc_atom.o compute_temp.o
+      compute_temp_asphere.o compute_temp_body.o compute_temp_chunk.o
+      compute_temp_com.o compute_temp_cs.o compute_temp_deform.o
+      compute_temp_deform_eff.o compute_temp_drude.o compute_temp_eff.o
+      compute_temp_partial.o compute_temp_profile.o compute_temp_ramp.o
+      compute_temp_region.o compute_temp_region_eff.o
+      compute_temp_rotate.o compute_temp_sphere.o compute_temp_uef.o
+      compute_ti.o compute_torque_chunk.o compute_vacf.o
+      compute_vcm_chunk.o compute_xrd.o create_atoms.o create_bonds.o
+      create_box.o delete_atoms.o delete_bonds.o dihedral.o
+      dihedral_charmm.o dihedral_charmm_intel.o dihedral_charmm_omp.o
+      dihedral_charmmfsw.o dihedral_class2.o dihedral_class2_omp.o
+      dihedral_cosine_shift_exp.o dihedral_cosine_shift_exp_omp.o
+      dihedral_fourier.o dihedral_fourier_intel.o dihedral_fourier_omp.o
+      dihedral_harmonic.o dihedral_harmonic_intel.o
+      dihedral_harmonic_omp.o dihedral_helix.o dihedral_helix_omp.o
+      dihedral_hybrid.o dihedral_multi_harmonic.o
+      dihedral_multi_harmonic_omp.o dihedral_nharmonic.o
+      dihedral_nharmonic_omp.o dihedral_opls.o dihedral_opls_intel.o
+      dihedral_opls_omp.o dihedral_quadratic.o dihedral_quadratic_omp.o
+      dihedral_spherical.o dihedral_table.o dihedral_table_omp.o
+      dihedral_zero.o displace_atoms.o domain.o domain_omp.o dump.o
+      dump_atom.o dump_atom_gz.o dump_atom_mpiio.o dump_cfg.o
+      dump_cfg_gz.o dump_cfg_mpiio.o dump_cfg_uef.o dump_custom.o
+      dump_custom_gz.o dump_custom_mpiio.o dump_dcd.o dump_image.o
+      dump_local.o dump_molfile.o dump_movie.o dump_netcdf.o
+      dump_netcdf_mpiio.o dump_xtc.o dump_xyz.o dump_xyz_gz.o
+      dump_xyz_mpiio.o error.o ewald.o ewald_disp.o ewald_omp.o fft3d.o
+      fft3d_wrap.o finish.o fix.o fix_adapt.o fix_adapt_fep.o
+      fix_addforce.o fix_addtorque.o fix_append_atoms.o fix_atom_swap.o
+      fix_ave_atom.o fix_ave_chunk.o fix_ave_correlate.o
+      fix_ave_correlate_long.o fix_ave_histo.o fix_ave_histo_weight.o
+      fix_ave_time.o fix_aveforce.o fix_balance.o fix_bond_break.o
+      fix_bond_create.o fix_bond_swap.o fix_box_relax.o fix_cmap.o
+      fix_controller.o fix_deform.o fix_deposit.o fix_deprecated.o
+      fix_dpd_energy.o fix_drag.o fix_drude.o fix_drude_transform.o
+      fix_dt_reset.o fix_edpd_source.o fix_efield.o fix_ehex.o
+      fix_enforce2d.o fix_eos_cv.o fix_eos_table.o fix_eos_table_rx.o
+      fix_evaporate.o fix_event.o fix_event_prd.o fix_event_tad.o
+      fix_external.o fix_filter_corotate.o fix_flow_gauss.o fix_freeze.o
+      fix_gcmc.o fix_gld.o fix_gle.o fix_gravity.o fix_gravity_omp.o
+      fix_grem.o fix_group.o fix_halt.o fix_heat.o fix_imd.o
+      fix_indent.o fix_intel.o fix_ipi.o fix_langevin.o
+      fix_langevin_drude.o fix_langevin_eff.o fix_lb_fluid.o
+      fix_lb_momentum.o fix_lb_pc.o fix_lb_rigid_pc_sphere.o
+      fix_lb_viscous.o fix_lineforce.o fix_manifoldforce.o fix_meso.o
+      fix_meso_stationary.o fix_minimize.o fix_momentum.o fix_move.o
+      fix_msst.o fix_mvv_dpd.o fix_mvv_edpd.o fix_mvv_tdpd.o fix_neb.o
+      fix_neigh_history.o fix_neigh_history_omp.o fix_nh.o
+      fix_nh_asphere.o fix_nh_asphere_omp.o fix_nh_body.o fix_nh_eff.o
+      fix_nh_intel.o fix_nh_omp.o fix_nh_sphere.o fix_nh_sphere_omp.o
+      fix_nh_uef.o fix_nph.o fix_nph_asphere.o fix_nph_asphere_omp.o
+      fix_nph_body.o fix_nph_eff.o fix_nph_omp.o fix_nph_sphere.o
+      fix_nph_sphere_omp.o fix_nphug.o fix_nphug_omp.o fix_npt.o
+      fix_npt_asphere.o fix_npt_asphere_omp.o fix_npt_body.o
+      fix_npt_eff.o fix_npt_intel.o fix_npt_omp.o fix_npt_sphere.o
+      fix_npt_sphere_omp.o fix_npt_uef.o fix_nve.o fix_nve_asphere.o
+      fix_nve_asphere_intel.o fix_nve_asphere_noforce.o fix_nve_body.o
+      fix_nve_dot.o fix_nve_dotc_langevin.o fix_nve_eff.o
+      fix_nve_intel.o fix_nve_limit.o fix_nve_line.o
+      fix_nve_manifold_rattle.o fix_nve_noforce.o fix_nve_omp.o
+      fix_nve_sphere.o fix_nve_sphere_omp.o fix_nve_tri.o fix_nvk.o
+      fix_nvt.o fix_nvt_asphere.o fix_nvt_asphere_omp.o fix_nvt_body.o
+      fix_nvt_eff.o fix_nvt_intel.o fix_nvt_manifold_rattle.o
+      fix_nvt_omp.o fix_nvt_sllod.o fix_nvt_sllod_eff.o
+      fix_nvt_sllod_intel.o fix_nvt_sllod_omp.o fix_nvt_sphere.o
+      fix_nvt_sphere_omp.o fix_nvt_uef.o fix_omp.o fix_oneway.o
+      fix_orient_bcc.o fix_orient_fcc.o fix_peri_neigh.o
+      fix_peri_neigh_omp.o fix_phonon.o fix_pimd.o fix_planeforce.o
+      fix_pour.o fix_press_berendsen.o fix_print.o fix_property_atom.o
+      fix_python_invoke.o fix_python_move.o fix_qbmsst.o fix_qeq.o
+      fix_qeq_comb.o fix_qeq_comb_omp.o fix_qeq_dynamic.o fix_qeq_fire.o
+      fix_qeq_point.o fix_qeq_reax.o fix_qeq_reax_omp.o
+      fix_qeq_shielded.o fix_qeq_slater.o fix_qtb.o fix_rattle.o
+      fix_read_restart.o fix_reaxc.o fix_reaxc_bonds.o
+      fix_reaxc_species.o fix_recenter.o fix_respa.o fix_restrain.o
+      fix_rhok.o fix_rigid.o fix_rigid_nh.o fix_rigid_nh_omp.o
+      fix_rigid_nh_small.o fix_rigid_nph.o fix_rigid_nph_omp.o
+      fix_rigid_nph_small.o fix_rigid_npt.o fix_rigid_npt_omp.o
+      fix_rigid_npt_small.o fix_rigid_nve.o fix_rigid_nve_omp.o
+      fix_rigid_nve_small.o fix_rigid_nvt.o fix_rigid_nvt_omp.o
+      fix_rigid_nvt_small.o fix_rigid_omp.o fix_rigid_small.o
+      fix_rigid_small_omp.o fix_rx.o fix_saed_vtk.o fix_setforce.o
+      fix_shake.o fix_shardlow.o fix_smd.o fix_smd_adjust_dt.o
+      fix_smd_integrate_tlsph.o fix_smd_integrate_ulsph.o
+      fix_smd_move_triangulated_surface.o fix_smd_setvel.o
+      fix_smd_tlsph_reference_configuration.o fix_smd_wall_surface.o
+      fix_spring.o fix_spring_chunk.o fix_spring_rg.o fix_spring_self.o
+      fix_srd.o fix_srp.o fix_store.o fix_store_force.o
+      fix_store_state.o fix_tdpd_source.o fix_temp_berendsen.o
+      fix_temp_csld.o fix_temp_csvr.o fix_temp_rescale.o
+      fix_temp_rescale_eff.o fix_tfmc.o fix_thermal_conductivity.o
+      fix_ti_spring.o fix_tmd.o fix_ttm.o fix_ttm_mod.o
+      fix_tune_kspace.o fix_vector.o fix_viscosity.o fix_viscous.o
+      fix_wall.o fix_wall_colloid.o fix_wall_ees.o fix_wall_gran.o
+      fix_wall_gran_omp.o fix_wall_gran_region.o fix_wall_harmonic.o
+      fix_wall_lj1043.o fix_wall_lj126.o fix_wall_lj93.o
+      fix_wall_piston.o fix_wall_reflect.o fix_wall_region.o
+      fix_wall_region_ees.o fix_wall_srd.o force.o gridcomm.o group.o
+      image.o imbalance.o imbalance_group.o imbalance_neigh.o
+      imbalance_store.o imbalance_time.o imbalance_var.o improper.o
+      improper_class2.o improper_class2_omp.o improper_cossq.o
+      improper_cossq_omp.o improper_cvff.o improper_cvff_intel.o
+      improper_cvff_omp.o improper_distance.o improper_fourier.o
+      improper_fourier_omp.o improper_harmonic.o
+      improper_harmonic_intel.o improper_harmonic_omp.o
+      improper_hybrid.o improper_ring.o improper_ring_omp.o
+      improper_umbrella.o improper_umbrella_omp.o improper_zero.o info.o
+      input.o integrate.o intel_buffers.o irregular.o kspace.o lammps.o
+      lattice.o library.o main.o manifold_cylinder.o
+      manifold_cylinder_dent.o manifold_dumbbell.o manifold_ellipsoid.o
+      manifold_factory.o manifold_gaussian_bump.o manifold_plane.o
+      manifold_plane_wiggle.o manifold_spine.o manifold_thylakoid.o
+      manifold_thylakoid_shared.o manifold_torus.o math_extra.o
+      math_special.o meam_dens_final.o meam_dens_init.o meam_force.o
+      meam_funcs.o meam_impl.o meam_setup_done.o meam_setup_global.o
+      meam_setup_param.o memory.o mgpt_linalg.o mgpt_readpot.o
+      mgpt_splinetab.o min.o min_cg.o min_fire.o min_hftn.o
+      min_linesearch.o min_quickmin.o min_sd.o minimize.o modify.o
+      molecule.o molfile_interface.o msm.o msm_cg.o msm_cg_omp.o
+      msm_omp.o nbin.o nbin_intel.o nbin_ssa.o nbin_standard.o neb.o
+      neigh_list.o neigh_request.o neighbor.o npair.o npair_copy.o
+      npair_full_bin.o npair_full_bin_atomonly.o
+      npair_full_bin_atomonly_omp.o npair_full_bin_ghost.o
+      npair_full_bin_ghost_intel.o npair_full_bin_ghost_omp.o
+      npair_full_bin_intel.o npair_full_bin_omp.o npair_full_multi.o
+      npair_full_multi_omp.o npair_full_nsq.o npair_full_nsq_ghost.o
+      npair_full_nsq_ghost_omp.o npair_full_nsq_omp.o
+      npair_half_bin_atomonly_newton.o
+      npair_half_bin_atomonly_newton_omp.o npair_half_bin_newtoff.o
+      npair_half_bin_newtoff_ghost.o npair_half_bin_newtoff_ghost_omp.o
+      npair_half_bin_newtoff_omp.o npair_half_bin_newton.o
+      npair_half_bin_newton_intel.o npair_half_bin_newton_omp.o
+      npair_half_bin_newton_ssa.o npair_half_bin_newton_tri.o
+      npair_half_bin_newton_tri_intel.o npair_half_bin_newton_tri_omp.o
+      npair_half_multi_newtoff.o npair_half_multi_newtoff_omp.o
+      npair_half_multi_newton.o npair_half_multi_newton_omp.o
+      npair_half_multi_newton_tri.o npair_half_multi_newton_tri_omp.o
+      npair_half_nsq_newtoff.o npair_half_nsq_newtoff_ghost.o
+      npair_half_nsq_newtoff_ghost_omp.o npair_half_nsq_newtoff_omp.o
+      npair_half_nsq_newton.o npair_half_nsq_newton_omp.o
+      npair_half_respa_bin_newtoff.o npair_half_respa_bin_newtoff_omp.o
+      npair_half_respa_bin_newton.o npair_half_respa_bin_newton_omp.o
+      npair_half_respa_bin_newton_tri.o
+      npair_half_respa_bin_newton_tri_omp.o
+      npair_half_respa_nsq_newtoff.o npair_half_respa_nsq_newtoff_omp.o
+      npair_half_respa_nsq_newton.o npair_half_respa_nsq_newton_omp.o
+      npair_half_size_bin_newtoff.o npair_half_size_bin_newtoff_omp.o
+      npair_half_size_bin_newton.o npair_half_size_bin_newton_omp.o
+      npair_half_size_bin_newton_tri.o
+      npair_half_size_bin_newton_tri_omp.o npair_half_size_nsq_newtoff.o
+      npair_half_size_nsq_newtoff_omp.o npair_half_size_nsq_newton.o
+      npair_half_size_nsq_newton_omp.o npair_halffull_newtoff.o
+      npair_halffull_newtoff_omp.o npair_halffull_newton.o
+      npair_halffull_newton_omp.o npair_intel.o npair_skip.o
+      npair_skip_respa.o npair_skip_size.o npair_skip_size_off2on.o
+      npair_skip_size_off2on_oneside.o nstencil.o nstencil_full_bin_2d.o
+      nstencil_full_bin_3d.o nstencil_full_ghost_bin_2d.o
+      nstencil_full_ghost_bin_3d.o nstencil_full_multi_2d.o
+      nstencil_full_multi_3d.o nstencil_half_bin_2d_newtoff.o
+      nstencil_half_bin_2d_newton.o nstencil_half_bin_2d_newton_ssa.o
+      nstencil_half_bin_2d_newton_tri.o nstencil_half_bin_3d_newtoff.o
+      nstencil_half_bin_3d_newton.o nstencil_half_bin_3d_newton_ssa.o
+      nstencil_half_bin_3d_newton_tri.o
+      nstencil_half_ghost_bin_2d_newtoff.o
+      nstencil_half_ghost_bin_3d_newtoff.o
+      nstencil_half_multi_2d_newtoff.o nstencil_half_multi_2d_newton.o
+      nstencil_half_multi_2d_newton_tri.o
+      nstencil_half_multi_3d_newtoff.o nstencil_half_multi_3d_newton.o
+      nstencil_half_multi_3d_newton_tri.o ntopo.o ntopo_angle_all.o
+      ntopo_angle_partial.o ntopo_angle_template.o ntopo_bond_all.o
+      ntopo_bond_partial.o ntopo_bond_template.o ntopo_dihedral_all.o
+      ntopo_dihedral_partial.o ntopo_dihedral_template.o
+      ntopo_improper_all.o ntopo_improper_partial.o
+      ntopo_improper_template.o output.o pair.o pair_adp.o
+      pair_adp_omp.o pair_agni.o pair_agni_omp.o pair_airebo.o
+      pair_airebo_intel.o pair_airebo_morse.o pair_airebo_morse_intel.o
+      pair_airebo_morse_omp.o pair_airebo_omp.o pair_beck.o
+      pair_beck_omp.o pair_body.o pair_bop.o pair_born.o
+      pair_born_coul_dsf.o pair_born_coul_dsf_cs.o pair_born_coul_long.o
+      pair_born_coul_long_cs.o pair_born_coul_long_omp.o
+      pair_born_coul_msm.o pair_born_coul_msm_omp.o
+      pair_born_coul_wolf.o pair_born_coul_wolf_cs.o
+      pair_born_coul_wolf_omp.o pair_born_omp.o pair_brownian.o
+      pair_brownian_omp.o pair_brownian_poly.o pair_brownian_poly_omp.o
+      pair_buck.o pair_buck_coul_cut.o pair_buck_coul_cut_intel.o
+      pair_buck_coul_cut_omp.o pair_buck_coul_long.o
+      pair_buck_coul_long_cs.o pair_buck_coul_long_intel.o
+      pair_buck_coul_long_omp.o pair_buck_coul_msm.o
+      pair_buck_coul_msm_omp.o pair_buck_intel.o
+      pair_buck_long_coul_long.o pair_buck_long_coul_long_omp.o
+      pair_buck_mdf.o pair_buck_omp.o pair_cdeam.o pair_cdeam_omp.o
+      pair_colloid.o pair_colloid_omp.o pair_comb.o pair_comb3.o
+      pair_comb_omp.o pair_coul_cut.o pair_coul_cut_omp.o
+      pair_coul_cut_soft.o pair_coul_cut_soft_omp.o pair_coul_debye.o
+      pair_coul_debye_omp.o pair_coul_diel.o pair_coul_diel_omp.o
+      pair_coul_dsf.o pair_coul_dsf_omp.o pair_coul_long.o
+      pair_coul_long_cs.o pair_coul_long_omp.o pair_coul_long_soft.o
+      pair_coul_long_soft_omp.o pair_coul_msm.o pair_coul_msm_omp.o
+      pair_coul_streitz.o pair_coul_wolf.o pair_coul_wolf_cs.o
+      pair_coul_wolf_omp.o pair_dpd.o pair_dpd_fdt.o
+      pair_dpd_fdt_energy.o pair_dpd_intel.o pair_dpd_omp.o
+      pair_dpd_tstat.o pair_dpd_tstat_omp.o pair_dsmc.o pair_eam.o
+      pair_eam_alloy.o pair_eam_alloy_intel.o pair_eam_alloy_omp.o
+      pair_eam_alloy_opt.o pair_eam_fs.o pair_eam_fs_intel.o
+      pair_eam_fs_omp.o pair_eam_fs_opt.o pair_eam_intel.o
+      pair_eam_omp.o pair_eam_opt.o pair_edip.o pair_edip_multi.o
+      pair_edip_omp.o pair_edpd.o pair_eff_cut.o pair_eim.o
+      pair_eim_omp.o pair_exp6_rx.o pair_extep.o pair_gauss.o
+      pair_gauss_cut.o pair_gauss_cut_omp.o pair_gauss_omp.o
+      pair_gayberne.o pair_gayberne_intel.o pair_gayberne_omp.o
+      pair_gran_hertz_history.o pair_gran_hertz_history_omp.o
+      pair_gran_hooke.o pair_gran_hooke_history.o
+      pair_gran_hooke_history_omp.o pair_gran_hooke_omp.o pair_gw.o
+      pair_gw_zbl.o pair_hbond_dreiding_lj.o
+      pair_hbond_dreiding_lj_omp.o pair_hbond_dreiding_morse.o
+      pair_hbond_dreiding_morse_omp.o pair_hybrid.o
+      pair_hybrid_overlay.o pair_kolmogorov_crespi_z.o pair_lcbop.o
+      pair_lennard_mdf.o pair_line_lj.o pair_list.o pair_lj96_cut.o
+      pair_lj96_cut_omp.o pair_lj_charmm_coul_charmm.o
+      pair_lj_charmm_coul_charmm_implicit.o
+      pair_lj_charmm_coul_charmm_implicit_omp.o
+      pair_lj_charmm_coul_charmm_intel.o
+      pair_lj_charmm_coul_charmm_omp.o pair_lj_charmm_coul_long.o
+      pair_lj_charmm_coul_long_intel.o pair_lj_charmm_coul_long_omp.o
+      pair_lj_charmm_coul_long_opt.o pair_lj_charmm_coul_long_soft.o
+      pair_lj_charmm_coul_long_soft_omp.o pair_lj_charmm_coul_msm.o
+      pair_lj_charmm_coul_msm_omp.o pair_lj_charmmfsw_coul_charmmfsh.o
+      pair_lj_charmmfsw_coul_long.o pair_lj_class2.o
+      pair_lj_class2_coul_cut.o pair_lj_class2_coul_cut_omp.o
+      pair_lj_class2_coul_long.o pair_lj_class2_coul_long_omp.o
+      pair_lj_class2_omp.o pair_lj_cubic.o pair_lj_cubic_omp.o
+      pair_lj_cut.o pair_lj_cut_coul_cut.o pair_lj_cut_coul_cut_omp.o
+      pair_lj_cut_coul_cut_soft.o pair_lj_cut_coul_cut_soft_omp.o
+      pair_lj_cut_coul_debye.o pair_lj_cut_coul_debye_omp.o
+      pair_lj_cut_coul_dsf.o pair_lj_cut_coul_dsf_omp.o
+      pair_lj_cut_coul_long.o pair_lj_cut_coul_long_cs.o
+      pair_lj_cut_coul_long_intel.o pair_lj_cut_coul_long_omp.o
+      pair_lj_cut_coul_long_opt.o pair_lj_cut_coul_long_soft.o
+      pair_lj_cut_coul_long_soft_omp.o pair_lj_cut_coul_msm.o
+      pair_lj_cut_coul_msm_omp.o pair_lj_cut_coul_wolf.o
+      pair_lj_cut_coul_wolf_omp.o pair_lj_cut_dipole_cut.o
+      pair_lj_cut_dipole_cut_omp.o pair_lj_cut_dipole_long.o
+      pair_lj_cut_intel.o pair_lj_cut_omp.o pair_lj_cut_opt.o
+      pair_lj_cut_soft.o pair_lj_cut_soft_omp.o pair_lj_cut_thole_long.o
+      pair_lj_cut_thole_long_omp.o pair_lj_cut_tip4p_cut.o
+      pair_lj_cut_tip4p_cut_omp.o pair_lj_cut_tip4p_long.o
+      pair_lj_cut_tip4p_long_omp.o pair_lj_cut_tip4p_long_opt.o
+      pair_lj_cut_tip4p_long_soft.o pair_lj_cut_tip4p_long_soft_omp.o
+      pair_lj_expand.o pair_lj_expand_omp.o pair_lj_gromacs.o
+      pair_lj_gromacs_coul_gromacs.o pair_lj_gromacs_coul_gromacs_omp.o
+      pair_lj_gromacs_omp.o pair_lj_long_coul_long.o
+      pair_lj_long_coul_long_intel.o pair_lj_long_coul_long_omp.o
+      pair_lj_long_coul_long_opt.o pair_lj_long_dipole_long.o
+      pair_lj_long_tip4p_long.o pair_lj_long_tip4p_long_omp.o
+      pair_lj_mdf.o pair_lj_sdk.o pair_lj_sdk_coul_long.o
+      pair_lj_sdk_coul_long_omp.o pair_lj_sdk_coul_msm.o
+      pair_lj_sdk_coul_msm_omp.o pair_lj_sdk_omp.o
+      pair_lj_sf_dipole_sf.o pair_lj_sf_dipole_sf_omp.o pair_lj_smooth.o
+      pair_lj_smooth_linear.o pair_lj_smooth_linear_omp.o
+      pair_lj_smooth_omp.o pair_lubricate.o pair_lubricateU.o
+      pair_lubricateU_poly.o pair_lubricate_omp.o pair_lubricate_poly.o
+      pair_lubricate_poly_omp.o pair_mdpd.o pair_mdpd_rhosum.o
+      pair_meam_spline.o pair_meam_spline_omp.o pair_meam_sw_spline.o
+      pair_meamc.o pair_mgpt.o pair_mie_cut.o pair_momb.o pair_morse.o
+      pair_morse_omp.o pair_morse_opt.o pair_morse_smooth_linear.o
+      pair_morse_smooth_linear_omp.o pair_morse_soft.o pair_multi_lucy.o
+      pair_multi_lucy_rx.o pair_nb3b_harmonic.o pair_nb3b_harmonic_omp.o
+      pair_nm_cut.o pair_nm_cut_coul_cut.o pair_nm_cut_coul_cut_omp.o
+      pair_nm_cut_coul_long.o pair_nm_cut_coul_long_omp.o
+      pair_nm_cut_omp.o pair_oxdna2_coaxstk.o pair_oxdna2_dh.o
+      pair_oxdna2_excv.o pair_oxdna2_stk.o pair_oxdna_coaxstk.o
+      pair_oxdna_excv.o pair_oxdna_hbond.o pair_oxdna_stk.o
+      pair_oxdna_xstk.o pair_peri_eps.o pair_peri_lps.o
+      pair_peri_lps_omp.o pair_peri_pmb.o pair_peri_pmb_omp.o
+      pair_peri_ves.o pair_polymorphic.o pair_python.o pair_reaxc.o
+      pair_reaxc_omp.o pair_rebo.o pair_rebo_intel.o pair_rebo_omp.o
+      pair_resquared.o pair_resquared_omp.o pair_smd_hertz.o
+      pair_smd_tlsph.o pair_smd_triangulated_surface.o pair_smd_ulsph.o
+      pair_smtbq.o pair_snap.o pair_soft.o pair_soft_omp.o
+      pair_sph_heatconduction.o pair_sph_idealgas.o pair_sph_lj.o
+      pair_sph_rhosum.o pair_sph_taitwater.o pair_sph_taitwater_morris.o
+      pair_srp.o pair_sw.o pair_sw_intel.o pair_sw_omp.o pair_table.o
+      pair_table_omp.o pair_table_rx.o pair_tdpd.o pair_tersoff.o
+      pair_tersoff_intel.o pair_tersoff_mod.o pair_tersoff_mod_c.o
+      pair_tersoff_mod_c_omp.o pair_tersoff_mod_omp.o pair_tersoff_omp.o
+      pair_tersoff_table.o pair_tersoff_table_omp.o pair_tersoff_zbl.o
+      pair_tersoff_zbl_omp.o pair_thole.o pair_tip4p_cut.o
+      pair_tip4p_cut_omp.o pair_tip4p_long.o pair_tip4p_long_omp.o
+      pair_tip4p_long_soft.o pair_tip4p_long_soft_omp.o pair_tri_lj.o
+      pair_ufm.o pair_ufm_omp.o pair_ufm_opt.o pair_vashishta.o
+      pair_vashishta_omp.o pair_vashishta_table.o
+      pair_vashishta_table_omp.o pair_yukawa.o pair_yukawa_colloid.o
+      pair_yukawa_colloid_omp.o pair_yukawa_omp.o pair_zbl.o
+      pair_zbl_omp.o pair_zero.o pppm.o pppm_cg.o pppm_cg_omp.o
+      pppm_disp.o pppm_disp_intel.o pppm_disp_omp.o pppm_disp_tip4p.o
+      pppm_disp_tip4p_omp.o pppm_intel.o pppm_omp.o pppm_stagger.o
+      pppm_tip4p.o pppm_tip4p_omp.o prd.o procmap.o python.o
+      python_impl.o random_mars.o random_park.o rcb.o read_data.o
+      read_dump.o read_restart.o reader.o reader_molfile.o
+      reader_native.o reader_xyz.o reaxc_allocate.o reaxc_bond_orders.o
+      reaxc_bond_orders_omp.o reaxc_bonds.o reaxc_bonds_omp.o
+      reaxc_control.o reaxc_ffield.o reaxc_forces.o reaxc_forces_omp.o
+      reaxc_hydrogen_bonds.o reaxc_hydrogen_bonds_omp.o reaxc_init_md.o
+      reaxc_init_md_omp.o reaxc_io_tools.o reaxc_list.o reaxc_lookup.o
+      reaxc_multi_body.o reaxc_multi_body_omp.o reaxc_nonbonded.o
+      reaxc_nonbonded_omp.o reaxc_reset_tools.o reaxc_system_props.o
+      reaxc_tool_box.o reaxc_torsion_angles.o reaxc_torsion_angles_omp.o
+      reaxc_traj.o reaxc_valence_angles.o reaxc_valence_angles_omp.o
+      reaxc_vector.o region.o region_block.o region_cone.o
+      region_cylinder.o region_intersect.o region_plane.o region_prism.o
+      region_sphere.o region_union.o remap.o remap_wrap.o replicate.o
+      rerun.o respa.o respa_omp.o restart_mpiio.o run.o set.o
+      smd_material_models.o sna.o special.o tad.o temper.o temper_grem.o
+      temper_npt.o thermo.o thr_data.o thr_omp.o timer.o uef_utils.o
+      universe.o update.o variable.o velocity.o verlet.o
+      verlet_lrt_intel.o verlet_split.o write_coeff.o write_data.o
+      write_dump.o write_restart.o xdr_compat.o&nbsp;&nbsp;
+      -lfftw3&nbsp;&nbsp;&nbsp; -L/usr/local/Cellar/netcdf/4.6.0/lib
+      -lnetcdf -lhdf5_hl -lhdf5 -lsz -lz -ldl -lm -lcurl -ldl
+      -L/Users/chibaf/.pyenv/versions/3.6.3/lib/python3.6/config-3.6m-darwin
+      -lpython3.6m -ldl -framework CoreFoundation
+      -Wl,-stack_size,1000000 -framework CoreFoundation -lz&nbsp;
+      -L/usr/local/Cellar/vtk/8.1.0/lib&nbsp;&nbsp;
+      -L/usr/local/opt/llvm/lib
+      -L/usr/local/Cellar/openblas/0.2.20_1/lib
+      -L/usr/local/Cellar/gcc/7.3.0/lib/gcc/7 -lgfortran -lopenblas
+      -lgomp -o ../<font color="#3333ff"><u>lmp_mpi</u></font><br>
+      size ../lmp_mpi<br>
+      __TEXT&nbsp;&nbsp;&nbsp; __DATA&nbsp;&nbsp;&nbsp;
+      __OBJC&nbsp;&nbsp;&nbsp; others&nbsp;&nbsp;&nbsp;
+      dec&nbsp;&nbsp;&nbsp; hex<br>
+      18370560&nbsp;&nbsp;&nbsp; 1048576&nbsp;&nbsp;&nbsp;
+      0&nbsp;&nbsp;&nbsp; 4301078528&nbsp;&nbsp;&nbsp;
+      4320497664&nbsp;&nbsp;&nbsp; 101859000<br>
+      <br>
+    </font><br>
+    <font face="Monaco">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title></title>
+      <div class="page" title="Page 4">
+        <div class="section" style="background-color: rgb(100.000000%,
+          100.000000%, 100.000000%)">
+          <div class="layoutArea">
+            <div class="column">
+              <p><font face="Courier"><span style="font-size: 14pt;">(11)
+                    Execution of lammps. You need to set a path to
+                    lmp_mpi:<br>
+                  </span></font></p>
+              <p><font face="Courier"><span style="font-size: 14pt;"></span></font></p>
+              <p><font face="Courier"><span style="font-size: 14pt;">(A)
+                    mpirun -np N lmp_mpi &lt; in.lammps
+                  </span></font></p>
+              <p><font face="Courier"> </font></p>
+              <p><font face="Courier"><span style="font-size: 14pt;">(B)
+                  </span><span style="font-size: 12pt;">mpirun -x
+                    OMP_NUM_THREADS=M -np N lmp_mpi -sf omp -in
+                    in.lammps<br>
+                  </span><span style="font-size: 14pt;">where N is
+                    number of mpi process, M number of OpenMP, and
+                    in.lammps is lammps input.
+                  </span></font></p>
+              <p><font face="Courier"> </font></p>
+              <p><font face="Courier"><span style="font-size: 14pt;">Description
+                    of lammps input is found in lammps manual.
+                    Example of lammps inputs are also found in </span><span
+                    style="font-size: 14pt; color: rgb(0, 0, 128);"><a
+                      href="http://mathweb.html.xdomain.jp/math/lammps/examples/">http://mathweb.html.xdomain.jp/math/lammps/examples/</a>
+                  </span></font><span style="font-size: 14.000000pt;
+                  font-family: 'Courier'"><font face="Courier">or the
+                    internet.</font>
+                </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </font>
+  </body>
+</html>
