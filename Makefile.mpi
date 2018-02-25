@@ -19,6 +19,9 @@ SIZE =		size
 ARCHIVE =	ar
 ARFLAGS =	-rc
 SHLIBFLAGS =	-shared
+KOKKOS_DEVICES = OpenMP
+KOKKOS_ARCH = SKL
+#Intel: SNB,HSW,BDW,SKL=Sky Lake, ...
 
 # ---------------------------------------------------------------------
 # LAMMPS-specific settings, all OPTIONAL
